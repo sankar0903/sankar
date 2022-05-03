@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+		stage('Scan') {
+            steps {
+                echo 'Scanning the code'
+            }
+        }
+		stage('build') {
+			agent {
+				label 'Jenkins-test'
+			}
+            steps {
+				sh '''
+				java -version\n
+                mvn --version\n
+				mvn clean package'''
+            }
+        }
+    }
+}
