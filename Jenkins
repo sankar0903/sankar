@@ -5,6 +5,7 @@ pipeline {
 		stage('Scan') {
             steps {
                 echo 'Scanning the code'
+		eco 'java --version'
             }
         }
 		stage('build') {
